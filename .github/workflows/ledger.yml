@@ -1,0 +1,24 @@
+name: claim gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python3 -m unittest -v
+      - name: Gate the example brief
+        run: python3 ledger.py check examples/brief.md --sources examples/sources.json || true
+      - name: Gate must fail on an uncited claim
+        run: |
+          printf 'This claim has no source.\n' > /tmp/uncited.md
+          if python3 ledger.py check /tmp/uncited.md --quiet; then
+            echo "gate did not block an uncited claim"; exit 1
+          fi

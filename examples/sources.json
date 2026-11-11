@@ -1,0 +1,22 @@
+{
+  "sources": {
+    "S1": {
+      "title": "Programme Annual Report 2025",
+      "publisher": "Implementing agency",
+      "url": "https://example.org/annual-report-2025",
+      "date": "2026-03-31"
+    },
+    "S2": {
+      "title": "Financing agreement, signed",
+      "publisher": "Ministry of Finance",
+      "url": "https://example.org/financing-agreement",
+      "date": "2026-01-15"
+    },
+    "S3": {
+      "title": "Mid-term review — superseded draft",
+      "publisher": "Independent evaluator",
+      "url": "https://example.org/mtr-draft",
+      "date": "2024-11-02"
+    }
+  }
+}
