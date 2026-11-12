@@ -10,7 +10,7 @@ import unittest
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-import ledger  # noqa: E402
+import source_gate as ledger  # noqa: E402
 
 
 def write(directory, name, text):
@@ -100,7 +100,7 @@ class CheckingTest(unittest.TestCase):
 
 class CliTest(unittest.TestCase):
     def run_cli(self, *args):
-        return subprocess.run([sys.executable, os.path.join(HERE, "ledger.py"), *args],
+        return subprocess.run([sys.executable, os.path.join(HERE, "source_gate.py"), *args],
                               capture_output=True, text=True)
 
     def test_pass_exit_zero(self):

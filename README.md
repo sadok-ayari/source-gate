@@ -1,13 +1,13 @@
-# evidence-ledger
+# source-gate
 
 A deterministic gate for any document that makes claims.
 
 Every paragraph, list item and table row in a brief is treated as one claim. A claim passes only when it cites a source that is declared, dated, and reachable. Anything else blocks.
 
 ```
-$ python3 ledger.py check examples/brief.md --sources examples/sources.json
+$ python3 source_gate.py check examples/brief.md --sources examples/sources.json
 
-evidence-ledger  ·  examples/brief.md
+source-gate  ·  examples/brief.md
 5 claims  ·  3 sources declared
 
     L9  UNKNOWN_SOURCE cites S4, which is not declared in the sources file
@@ -42,10 +42,10 @@ Exit code is `0` on pass and `1` when anything blocks, so it drops straight into
 ## Usage
 
 ```bash
-python3 ledger.py check BRIEF.md --sources sources.json
-python3 ledger.py check BRIEF.md --sources sources.json --max-age-months 12
-python3 ledger.py check BRIEF.md --sources sources.json --json
-python3 ledger.py check BRIEF.md --sources sources.json --quiet
+python3 source_gate.py check BRIEF.md --sources sources.json
+python3 source_gate.py check BRIEF.md --sources sources.json --max-age-months 12
+python3 source_gate.py check BRIEF.md --sources sources.json --json
+python3 source_gate.py check BRIEF.md --sources sources.json --quiet
 ```
 
 No dependencies. Python 3.10 or later, standard library only.
@@ -71,7 +71,7 @@ Cite with `[S1]` or `[S1, S2]` anywhere in the claim unit. Bracketed tokens insi
 
 ```yaml
 - name: Claim gate
-  run: python3 ledger.py check briefs/monthly.md --sources briefs/sources.json
+  run: python3 source_gate.py check briefs/monthly.md --sources briefs/sources.json
 ```
 
 A failing gate blocks the merge. That is the whole idea: the document cannot reach a counterpart unfunded by evidence.
